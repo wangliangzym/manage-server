@@ -1,7 +1,9 @@
 package com.zym.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.zym.entity.BaseMenu;
+import org.springframework.stereotype.Repository;
+import tk.mybatis.mapper.common.Mapper;
 
-@Mapper
-public interface BaseMenuMapper {
+@Repository
+public interface BaseMenuMapper extends Mapper<BaseMenu> {
 }

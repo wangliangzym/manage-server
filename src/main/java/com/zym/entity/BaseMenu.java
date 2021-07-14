@@ -2,14 +2,18 @@ package com.zym.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Data
+@Table(name = "base_menu")
 public class BaseMenu {
 
     /**
      * '主键'
      */
+    @Id
     private Integer id;
     /**
      * '编码'
@@ -26,15 +30,19 @@ public class BaseMenu {
     /**
      * '菜单级别'
      */
-    private String level;
+    private Integer level;
     /**
      * '父级菜单'
      */
-    private String parentId;
+    private Integer parentId;
     /**
      * '图标'
      */
     private String icon;
+    /**
+     * 顺序
+     */
+    private Integer menuOrder;
     /**
      * '创建时间'
      */
