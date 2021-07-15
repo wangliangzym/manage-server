@@ -49,4 +49,15 @@ public class BaseCustomerServiceImpl implements IBaseCustomerService {
         log.info("新增用户信息---> {}",baseCustomer);
         return customerMapper.insertSelective(baseCustomer) > 0;
     }
+
+    /**
+     * 通过主键查询客户信息
+     * @param id 主键
+     * @return 客户信息
+     */
+    @Override
+    public BaseCustomer getById(Integer id) {
+        log.info("查询用户信息id---> {}",id);
+        return customerMapper.selectByPrimaryKey(id);
+    }
 }

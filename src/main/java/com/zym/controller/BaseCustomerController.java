@@ -6,6 +6,7 @@ import com.zym.service.IBaseCustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -44,5 +45,17 @@ public class BaseCustomerController {
     public Result addCustomer(@RequestBody BaseCustomer baseCustomer){
         return baseCustomerService.insertBySelect(baseCustomer) ?
                 Result.ok("添加成功") : Result.error(500,"添加失败");
+    }
+
+    /**
+     * 查询信息
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getById")
+    @ResponseBody
+    public Result<BaseCustomer> getById(@RequestParam("id") Integer id){
+        return Result.ok(baseCustomerService.getById(id));
+
     }
 }

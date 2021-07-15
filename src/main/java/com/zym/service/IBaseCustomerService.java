@@ -7,4 +7,6 @@ public interface IBaseCustomerService {
     PageInfo getUserList(BaseCustomer baseCustomer);
 
     Boolean insertBySelect(BaseCustomer baseCustomer);
+
+    BaseCustomer getById(Integer id);
 }
