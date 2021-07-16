@@ -24,7 +24,6 @@ INSERT INTO `manage`.`base_menu`(`id`, `code`, `name`, `path`, `level`, `parent_
 INSERT INTO `manage`.`base_menu`(`id`, `code`, `name`, `path`, `level`, `parent_id`, `menu_order`, `icon`, `create_time`, `update_time`, `create_user`, `update_user`, `del_flag`) VALUES (4, 'GOODS_RECEIVE', '收货', '/goodsReceiveList', 2, 3, 21, 'el-icon-menu', '2021-07-14 16:57:29', '2021-07-14 16:57:29', NULL, NULL, 0);
 INSERT INTO `manage`.`base_menu`(`id`, `code`, `name`, `path`, `level`, `parent_id`, `menu_order`, `icon`, `create_time`, `update_time`, `create_user`, `update_user`, `del_flag`) VALUES (5, 'GOODS_SEND', '发货', '/goodsSendList', 2, 3, 22, 'el-icon-menu', '2021-07-14 16:58:07', '2021-07-14 16:58:07', NULL, NULL, 0);
 
-update base_menu set path = '/customers' where id = 2
 -- 客户表
 CREATE TABLE `base_customer` (
   `id` int(16) NOT NULL AUTO_INCREMENT COMMENT '主键id',
@@ -39,3 +38,7 @@ CREATE TABLE `base_customer` (
   `del_flag` tinyint(2) DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='客户表';
+
+update base_menu set  name = '商品管理' where id = 3;
+update base_menu set path = '/goodsReceiveList' where id = 4;
+update base_menu set path = '/goodsSendList' where id = 5;
