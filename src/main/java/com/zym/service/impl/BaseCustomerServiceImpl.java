@@ -3,6 +3,7 @@ package com.zym.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zym.entity.BaseCustomer;
+import com.zym.enums.FlagEnum;
 import com.zym.mapper.BaseCustomerMapper;
 import com.zym.service.IBaseCustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -59,5 +60,32 @@ public class BaseCustomerServiceImpl implements IBaseCustomerService {
     public BaseCustomer getById(Integer id) {
         log.info("查询用户信息id---> {}",id);
         return customerMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 更新用户信息
+     * @param baseCustomer 需要更新的数据
+     * @return 是否更新成功
+     */
+    @Override
+    public Boolean updateBySelected(BaseCustomer baseCustomer) {
+        baseCustomer.setUpdateTime(new Date());
+        log.info("需要更新的数据为---> {}",baseCustomer);
+        return customerMapper.updateByPrimaryKeySelective(baseCustomer) > 0;
+    }
+
+    /**
+     * 删除客户信息
+     * @param id 主键id
+     * @return
+     */
+    @Override
+    public Boolean deleteById(Integer id){
+        log.info("删除的用户id为---> {}",id);
+        BaseCustomer baseCustomer = new BaseCustomer();
+        baseCustomer.setId(id);
+        baseCustomer.setDelFlag(FlagEnum.YES.getcode());
+        baseCustomer.setUpdateTime(new Date());
+        return customerMapper.updateByPrimaryKeySelective(baseCustomer) > 0;
     }
 }

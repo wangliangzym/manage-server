@@ -7,6 +7,7 @@
             <if test="query != null and query != ''">
                 and customer_name like concat('%',#{query},'%')
             </if>
+            and del_Flag = 0
         </where>
     </select>
 

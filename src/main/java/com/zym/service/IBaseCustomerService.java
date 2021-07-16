@@ -9,4 +9,8 @@ public interface IBaseCustomerService {
     Boolean insertBySelect(BaseCustomer baseCustomer);
 
     BaseCustomer getById(Integer id);
+
+    Boolean updateBySelected(BaseCustomer baseCustomer);
+
+    Boolean deleteById(Integer id);
 }
